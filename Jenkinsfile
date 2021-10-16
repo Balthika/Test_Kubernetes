@@ -38,10 +38,10 @@ pipeline {
         stage('Sonarqube'){
             steps{
                 script{
-                    def scannerHome = tool 'SonarQube Scanner'
+                    def scannerHome = tool 'Sonarqube'
                     
-                    withSonarQubeEnv('Sonar Server'){
-                        sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=ms-maven -Dsonar.sources=. -Dsonar.java.binaries=target/classes -Dsonar.exclusions='**/*/test/**/*, **/*/acceptance-test/**/*, **/*.html'"
+                    withSonarQubeEnv('Sonarqube'){
+                        sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=Lab_DevSecOps -Dsonar.sources=. -Dsonar.java.binaries=target/classes Dsonar.projectBaseDir=${env.WORKSPACE} -Dsonar.exclusions='*//test/*/, *//acceptance-test/*/, */.html' -Dsonar.host.url=http://192.168.190.132:9001 -Dsonar.login=988f780a01019f25714e0549b0d3ecf5b1310e72"
                     }
                 }
             }
