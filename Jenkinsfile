@@ -6,7 +6,7 @@ pipeline {
     }
   
     stages {
-        stage('initial'){
+        stage('Inicializando '){
             steps{
              sh '''
               echo "PATH = ${PATH}"
@@ -15,19 +15,19 @@ pipeline {
             }
         }
         
-        stage('Compile'){
+        stage('Compilando'){
             steps{
                 sh 'mvn clean compile -e'
             }
         }
         
-        stage('Test'){
+        stage('Testeando'){
             steps{
                 sh 'mvn clean test -e'
             }
         }
         
-        stage('SCA'){
+        stage('Dependecy-Check'){
             steps{
                 sh 'mvn org.owasp:dependency-check-maven:check'
                 
@@ -35,12 +35,12 @@ pipeline {
             }
         }
         
-        stage('Sonarqube'){
+        stage('SonarQubeLAB'){
             steps{
                 script{
-                    def scannerHome = tool 'Sonarqube'
+                    def scannerHome = tool 'SonarQube'
                     
-                    withSonarQubeEnv('Sonarqube'){
+                    withSonarQubeEnv('SonarQube'){
                         sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=Lab_DevSecOps -Dsonar.sources=. -Dsonar.java.binaries=target/classes Dsonar.projectBaseDir=${env.WORKSPACE} -Dsonar.exclusions='*//test/*/, *//acceptance-test/*/, */.html' -Dsonar.host.url=http://192.168.190.132:9001 -Dsonar.login=988f780a01019f25714e0549b0d3ecf5b1310e72"
                     }
                 }
