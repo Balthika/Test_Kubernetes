@@ -38,9 +38,8 @@ pipeline {
                       steps{
                           figlet 'Slack Message'
                           
-                            slackSend channel: 'lab1',
+                            slackSend channel: 'lab1', message: 'Mensaje de Prueba!!!!!'
                             color: 'good',
-                            message: "Se ha terminado una ejecucion del pipeline.."
                       }
                   }
         
