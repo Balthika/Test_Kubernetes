@@ -34,6 +34,14 @@ pipeline {
                 archiveArtifacts artifacts: 'target/dependency-check-report.html', followSymlinks: false
             }
         }
+        stage('Slack'){
+            steps{
+                figlet 'Slack Message'
+                slackSend channel: 'notificacion-jenkins',
+                    color: 'good',
+                    message: "Se ha terminado una ejecucion del pipeline."
+            }
+        }
         
         stage('SonarQubeLAB'){
             steps{
