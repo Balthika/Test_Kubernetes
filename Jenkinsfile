@@ -40,7 +40,7 @@ pipeline {
                           
                             slackSend channel: 'lab1',
                             color: 'good',
-                            message: "Se ha terminado una ejecucion del pipeline."
+                            message: "Se ha terminado una ejecucion del pipeline.."
                       }
                   }
         
