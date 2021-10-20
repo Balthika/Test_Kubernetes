@@ -37,7 +37,8 @@ pipeline {
         stage('Slack'){
             steps{
                 figlet 'Slack Message'
-                slackSend channel: 'notificacion-jenkins',
+                slackSend channel: 'lab1',
+                    slackSend channel: 'lab1', message: 'Este es un mensaje creado por Rupert.'
                     color: 'good',
                     message: "Se ha terminado una ejecucion del pipeline."
             }
