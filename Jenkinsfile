@@ -34,15 +34,15 @@ pipeline {
                 archiveArtifacts artifacts: 'target/dependency-check-report.html', followSymlinks: false
             }
         }
-        stage('Slack'){
-            steps{
-                figlet 'Slack Message'
-                slackSend channel: 'lab1',
-                    slackSend channel: 'lab1', message: 'Este es un mensaje creado por Rupert.'
-                    color: 'good',
-                    message: "Se ha terminado una ejecucion del pipeline."
-            }
-        }
+          stage('Slack'){
+                      steps{
+                          figlet 'Slack Message'
+                          
+                            slackSend channel: 'lab1',
+                            color: 'good',
+                            message: "Se ha terminado una ejecucion del pipeline."
+                      }
+                  }
         
         stage('SonarQubeLAB'){
             steps{
