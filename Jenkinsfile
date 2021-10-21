@@ -85,7 +85,7 @@ pipeline {
 					}
         
             
-		stage('Webhook Slack'){
+		stage('Slack'){
     		steps{
 			figlet 'Webhook Slack'
     			slackSend channel: 'lab1',
