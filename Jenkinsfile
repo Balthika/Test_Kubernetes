@@ -84,15 +84,6 @@ pipeline {
 						}
 					}
         
-            
-		stage('Slack'){
-    		steps{
-			figlet 'Webhook Slack'
-    			slackSend channel: 'lab1',
-				color: 'good',
-				message: "Se ha terminado una ejecucion del pipeline."
-				}
-			}
 		}
 }
        
